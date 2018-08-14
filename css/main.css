@@ -1,0 +1,13 @@
+tr {
+    height: 100px;
+}
+
+td {
+    width: 100px;
+    background-color: grey;
+}
+
+/* Animations for flipping card, correct match, incorrect match, winning game */
+/* Media queries for responsiveness */
+/* Round the corners of the cards and style the borders between them */
+/* and around the table */

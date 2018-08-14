@@ -1,0 +1,111 @@
+<!-- Development Strategy
+It's very important that you plan your project before you start writing any code.
+Break your project down into small pieces of work and plan out your approach to
+each one. It's much easier to debug and fix an issue if you've only made a small
+change. It becomes much harder if you wait longer to test your code. You don't
+build a house all at once, but brick by brick.
+
+Start by building a very simple grid of cards. Don't worry about styling, just get
+something clickable on the page.
+
+Figure out the HTML needed to represent a card. Remember, you have to represent two
+sides of the card. Are you going to have two separate elements stacked on top of each
+other?
+
+Add the functionality to handle clicks. This should reveal the hidden side of each
+card.
+
+Work on the matching logic. How does your game "know" if a player guesses correctly
+or incorrectly?
+
+Work on the winning condition. How does your game “know” if a player has won?
+
+We recommend saving styling until the very end. Allow your game logic and
+functionality to dictate the styling. -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Concentration</title>
+
+    <!-- Link to specific font families here -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+
+    <!-- Link to additional style sheets from the main CSS file -->
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+  <body>
+    <!-- Page header content -->
+    <header class="header">
+      <h1>The Game of Concentration</h1>
+    </header>
+
+    <div class="main__container">
+      <!-- Main page content -->
+      <!-- Lay out using <article>, <section>, and <div> elements -->
+      <main>
+        <!-- Grid of 16 cards -->
+        <table class="grid">
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </main>
+
+      <!-- Sidebar content; get to display next to main -->
+      <aside>
+        <!-- current star rating, number of moves, time, and reset button -->
+        <!-- stack above main on narrow screens -->
+        <div class="sidebar__container">
+          <div class="stars">
+            <img class="star1" src="img/star-filled-32.png" alt="Solid star">
+            <img class="star2" src="img/star-filled-32.png" alt="Solid star">
+            <img class="star3" src="img/star-filled-32.png" alt="Solid star">
+            <img class="star4" src="img/star-filled-32.png" alt="Solid star">
+            <img class="star5" src="img/star-filled-32.png" alt="Solid star">
+          </div>
+
+          <p class="moves">0 Moves</p>
+
+          <p class="timer">Elapsed time 00:00</p>
+
+          <input class="reset" type="image" src="img/reset-32.png" alt="Reset button">
+        </div>
+      </aside>
+    </div>
+
+    <!-- Page footer content -->
+    <footer>
+      <!-- Copyright notice -->
+    </footer>
+
+    <!-- Link to custom JavaScript files -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
