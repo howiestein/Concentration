@@ -35,6 +35,15 @@ function generateRandomList(n) {
   return(list);
 }
 
+// Pause execution for a specified number of milliseconds
+function pauseExecution(time) {
+  const startTime = performance.now();
+  let currentTime = performance.now();
+
+  do {
+    currentTime = performance.now();
+  } while ((currentTime - startTime) < time);
+}
 
 // Reset the star ranking to five stars
 function resetStarRanking() {

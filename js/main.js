@@ -1,7 +1,10 @@
 // Global variable declarations
-let numMoves = 0;
-let startTime = performance.now();
-let timerFunction = 0;
+let numMoves = 0,
+    startTime = performance.now(),
+    timerFunction = 0
+    turnBeginning = true,
+    firstCard = "",
+    numMatches = 0;
 const numCardRows = 4,
       numCardCols = 4;
 
@@ -45,7 +48,7 @@ function startGame(event) {
 
       newCell.classList.add(pairs[index]);
       newImg.setAttribute("src", imageName);
-      newImg.setAttribute("alt", alts[imageIndex]);
+      newImg.setAttribute("alt", alts[imageIndex-1]);
       newImg.setAttribute("height", "100px");
       newImg.setAttribute("width", "100px");
       newImg.setAttribute("hidden", "");
@@ -65,6 +68,11 @@ function startGame(event) {
   // Reset the star ranking
   resetStarRanking();
 
+  // Reset global variables
+  turnBeginning = true;
+  firstCard = "";
+  numMatches = 0;
+
   // Reset the game timer and start it running
   startTime = performance.now();
   timerFunction = setInterval(updateTimer, 1000, startTime);
@@ -76,40 +84,52 @@ function startGame(event) {
 document.querySelector(".reset").addEventListener("click", startGame);
 
 
-// When first card of a turn is clicked, display its picture (with animation?)
-// When second card of a turn is clicked, display its picture (with animation?)
-// Test if its image's class is the same as the first ones
-// If so, animate the pair and record the match; if the game is over, call endGame()
-// If not, animate the pair and flip them back over
-
-// When a cell is clicked, animate its display.
-// If it is the first card in a pair, remove the event handler
-// so it cannot be flipped again until the next turn.
-// If it is the second card in a pair, check if it is a match or not, and animate.
-//    Also increment the numMoves variable.
-// Attached to the table to reduce the number of listeners
-// TODO implement logic to test if there is a match
+// Process clicks on the cards
 function clickCard(event) {
   const picture = event.target.firstChild;
 
-  // TODO animate picture display
-console.log(event.target);
-console.log(picture);
-  // Display the picture
-  if (picture.hasAttribute("hidden")) {
+  // If the target is an image (IMG), do nothing because it has already been flipped over
+  if (event.target.tagName == "TD") {
+    // When a face-down card is clicked, display the picture
+    // TODO animate picture display
     picture.removeAttribute("hidden");
+
+    // If this is the second card of the turn, test if it is a match or not
+    if (!turnBeginning) {
+      // Test if the image matches the first one turned over
+      if (event.target.className == firstCard.className) {
+        // TODO animate the cards for match
+        numMatches++;
+      } else {
+        // Pause so the user can see the card
+//        pauseExecution(10000);
+
+        // TODO animate the cards for mismatch
+        // Turn the cards back over
+        picture.setAttribute("hidden", "");
+        firstCard.firstChild.setAttribute("hidden", "");
+      }
+
+      // Update the number of moves
+      numMoves++;
+      displayNumMoves(numMoves);
+
+      // Update the star ranking based on the number of moves
+      if (numMoves == 9 || numMoves == 12 || numMoves == 15 || numMoves == 18 || numMoves == 21) {
+        decrementStarRanking();
+      }
+
+      turnBeginning = true;
+    } else {
+      firstCard = event.target;
+      turnBeginning = false;
+    }
+
+    // If the player has won the game, call endGame()
+    if (numMatches == 8) {
+      endGame(event);
+    }
   }
-
-  // Update the number of moves
-  numMoves++;
-  displayNumMoves(numMoves);
-
-  // Update the star ranking based on the number of moves
-  if (numMoves == 9 || numMoves == 12 || numMoves == 15 || numMoves == 18 || numMoves == 21) {
-    decrementStarRanking();
-  }
-
-  // If the player has won the game, call endGame()
 
   event.preventDefault();
 }
@@ -124,9 +144,10 @@ document.querySelector(".grid").addEventListener("click", clickCard);
 //     3. ask if they want to play again
 function endGame(event) {
   const timerString = document.querySelector(".timer").textContent.substring(document.querySelector(".timer").textContent.search("[0-9]")),
-        currentRanking = document.querySelector(".stars").classList,
-        starRanking = 0,
-        message = "";
+        currentRanking = document.querySelector(".stars").classList;
+  let starRanking = 0,
+      message = "",
+      stars = " stars";
 
   // Stop the timer
   clearInterval(timerFunction);
@@ -142,11 +163,12 @@ function endGame(event) {
     starRanking = 2;
   } else if (currentRanking.contains("one")) {
     starRanking = 1;
+    stars = " star"
   }
 
-  message = "Congratulations!\nYou finished in " + timerString + "with a ranking of " + starRanking + " stars.\nDo you want to play again?";
+  message = "Congratulations!\nYou finished in " + timerString + " with a ranking of " + starRanking + stars + ".\nDo you want to play again?";
 
-  if (confirm(message)) {
+  if (window.confirm(message)) {
     startGame(event);
   }
 
