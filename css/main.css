@@ -1,14 +1,192 @@
+/*
+ *
+ * Common tag styles
+ *
+ */
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Roboto;
+  font-size: 14px;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+main {
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header {
+  font-family: 'Hanalei Fill';
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+footer {
+  padding-top: 20px;
+  box-sizing: border-box;
+  border-top: 1px solid #e0e0e0;
+  width: 100%;
+  background-color: #ccc;
+  text-align: right;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+img, embed, object, video {
+  max-width: 100%;
+}
+
+
+/*
+ *
+ * Header
+ *
+ */
+
+.header {
+  width: 100%;
+  box-shadow: 5px 5px 5px 10px rgba (61, 148, 219, 0.5);
+  text-align: center;
+  color: #f4e842;
+  background-color: #1f1fdf;
+}
+
+
+/*
+ *
+ * Flex box containers
+ *
+ */
+
+.main__container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.stars__container {
+  width: 130px;
+  padding: 10px;
+  display: inline-block;
+  margin: auto;
+  order: 1;
+  box-sizing: border-box;
+}
+
+.stats__container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-bottom: 20px;
+  order: 2;
+  box-sizing: border-box;
+}
+
+
+/*
+ *
+ * Statistics elements
+ *
+ */
+
+.moves__label, .moves__number {
+  width: 30%;
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+}
+
+.moves__label {
+  order: 3;
+}
+
+.moves__number {
+  order: 6;
+}
+
+.timer__label, .timer__number {
+  width: 50%;
+  vertical-align: top;
+  text-align: center;
+  display: inline-block;
+}
+
+.timer__label {
+  order: 4;
+}
+
+.timer__number {
+  order: 7;
+}
+
+.reset__container {
+  width: 20%;
+  vertical-align: top;
+  display: inline-block;
+  margin-right: 0;
+  float: right;
+  order: 5;
+  box-sizing: border-box;
+}
+
+.reset {
+  width: 16px;
+  height: 16px;
+  vertical-align: top;
+  display: inline-block;
+  float: right;
+}
+
+
+/*
+ *
+ * Card grid
+ *
+ */
+
 tr {
-    height: 100px;
+  height: 60px;
 }
 
 td {
-    width: 100px;
-    background-color: grey;
+  width: 60px;
+  background-color: #888888;
+  border-radius: 5px;
+/*  background-image: url("../img/circle.png"); */
+  margin: auto;
 }
 
-/* Animations for flipping card, correct match (with sound?), incorrect match (with sound?) */
-/* Media queries for responsiveness--icon and image/cell sizes, font sizes, horizontal vs. vertical orientation */
-/* Round the corners of the cards and style the borders between them and the margins */
-/* and around the table */
-/* Image for back side of card */
+td img {
+  width: 50px;
+  height: 50px;
+  padding-left: 4px;
+  vertical-align: middle;
+  margin: auto;
+  transition: width 3s;
+}
+
+.grid {
+  order: 8;
+  width: 100%;
+  height: 300px;
+  border-spacing: 10px;
+  background-color: #8f8ff0;
+}

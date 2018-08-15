@@ -3,7 +3,7 @@
 
 // Display the number of moves they user has made
 function displayNumMoves(num) {
-  document.querySelector(".moves").textContent = num + " Moves";
+  document.querySelector(".moves__number").textContent = num;
 }
 
 // Generate a random integer between 0 and max
@@ -47,65 +47,65 @@ function pauseExecution(time) {
 
 // Reset the star ranking to five stars
 function resetStarRanking() {
-  const ranking = document.querySelector(".stars").classList;
+  const ranking = document.querySelector(".stars__container").classList;
 
   // Set class to five stars
   ranking.remove("four", "three", "two", "one", "zero");
   ranking.add("five");
 
   // Set all stars to filled
-  document.querySelector(".star5").setAttribute("src", "img/star-filled-32.png");
+  document.querySelector(".star5").setAttribute("src", "img/star-filled-16.png");
   document.querySelector(".star5").setAttribute("alt", "Solid star");
 
-  document.querySelector(".star4").setAttribute("src", "img/star-filled-32.png");
+  document.querySelector(".star4").setAttribute("src", "img/star-filled-16.png");
   document.querySelector(".star4").setAttribute("alt", "Solid star");
 
-  document.querySelector(".star3").setAttribute("src", "img/star-filled-32.png");
+  document.querySelector(".star3").setAttribute("src", "img/star-filled-16.png");
   document.querySelector(".star3").setAttribute("alt", "Solid star");
 
-  document.querySelector(".star2").setAttribute("src", "img/star-filled-32.png");
+  document.querySelector(".star2").setAttribute("src", "img/star-filled-16.png");
   document.querySelector(".star2").setAttribute("alt", "Solid star");
 
-  document.querySelector(".star1").setAttribute("src", "img/star-filled-32.png");
+  document.querySelector(".star1").setAttribute("src", "img/star-filled-16.png");
   document.querySelector(".star1").setAttribute("alt", "Solid star");
 }
 
 
 // Remove a star from the ranking
 function decrementStarRanking() {
-  const currentRanking = document.querySelector(".stars").classList;
+  const currentRanking = document.querySelector(".stars__container").classList;
 
   if (currentRanking.contains("five")) {
     // Set star5 to unfilled
-    document.querySelector(".star5").setAttribute("src", "img/star-unfilled-32.png");
+    document.querySelector(".star5").setAttribute("src", "img/star-unfilled-16.png");
     document.querySelector(".star5").setAttribute("alt", "Outline star");
 
     // Update class to four
     currentRanking.replace("five", "four");
   } else if (currentRanking.contains("four")) {
     // Set star4 to unfilled
-    document.querySelector(".star4").setAttribute("src", "img/star-unfilled-32.png");
+    document.querySelector(".star4").setAttribute("src", "img/star-unfilled-16.png");
     document.querySelector(".star4").setAttribute("alt", "Outline star");
 
     // Update class to three
     currentRanking.replace("four", "three");
   } else if (currentRanking.contains("three")) {
     // Set star3 to unfilled
-    document.querySelector(".star3").setAttribute("src", "img/star-unfilled-32.png");
+    document.querySelector(".star3").setAttribute("src", "img/star-unfilled-16.png");
     document.querySelector(".star3").setAttribute("alt", "Outline star");
 
     // Update class to two
     currentRanking.replace("three", "two");
   } else if (currentRanking.contains("two")) {
     // Set star2 to unfilled
-    document.querySelector(".star2").setAttribute("src", "img/star-unfilled-32.png");
+    document.querySelector(".star2").setAttribute("src", "img/star-unfilled-16.png");
     document.querySelector(".star2").setAttribute("alt", "Outline star");
 
     // Update class to one
     currentRanking.replace("two", "one");
   } else if (currentRanking.contains("one")) {
     // Set star1 to unfilled
-    document.querySelector(".star1").setAttribute("src", "img/star-unfilled-32.png");
+    document.querySelector(".star1").setAttribute("src", "img/star-unfilled-16.png");
     document.querySelector(".star1").setAttribute("alt", "Outline star");
 
     // Update class to zero
@@ -122,13 +122,13 @@ function updateTimer(start) {
         seconds = Math.trunc(baseSeconds - (minutes * 60));
 
   if (minutes < 10 && seconds < 10) {
-    document.querySelector(".timer").textContent = "Elapsed time 0" + minutes + ":0" + seconds;
+    document.querySelector(".timer__number").textContent = "0" + minutes + ":0" + seconds;
   } else if (minutes < 10) {
-    document.querySelector(".timer").textContent = "Elapsed time 0" + minutes + ":" + seconds;
+    document.querySelector(".timer__number").textContent = "0" + minutes + ":" + seconds;
   } else if (seconds < 10) {
-    document.querySelector(".timer").textContent = "Elapsed time " + minutes + ":0" + seconds;
+    document.querySelector(".timer__number").textContent = minutes + ":0" + seconds;
   } else {
-    document.querySelector(".timer").textContent = "Elapsed time " + minutes + ":" + seconds;
+    document.querySelector(".timer__number").textContent = minutes + ":" + seconds;
   }
 }
 

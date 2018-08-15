@@ -15,7 +15,6 @@ const numCardRows = 4,
 //     4. Reset game timer
 function startGame(event) {
   const fragment = document.createDocumentFragment(),
-        pairs = ["pair1", "pair1", "pair2", "pair2", "pair3", "pair3", "pair4", "pair4", "pair5", "pair5", "pair6", "pair6", "pair7", "pair7", "pair8", "pair8"],
         alts = ["Daisy", "Rose", "Rabbit", "Willet", "Heron", "Plover", "Deptford pink", "Dragonfly"],
         table = document.querySelector(".grid")
         indices = Array(16);
@@ -26,7 +25,7 @@ function startGame(event) {
   }
 
   // Zero out the displayed time
-  document.querySelector(".timer").textContent = "Elapsed time 00:00";
+  document.querySelector(".timer__number").textContent = "00:00";
 
   // Clear the current board. Code taken from https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
   while (table.firstChild) {
@@ -45,7 +44,7 @@ function startGame(event) {
             imageName = "img/card" + (index+1) + ".jpg",
             newImg = document.createElement("img");
 
-      newCell.classList.add(pairs[index]);
+      newCell.classList.add("pair"+(index+1));
       newImg.setAttribute("src", imageName);
       newImg.setAttribute("alt", alts[index]);
       newImg.setAttribute("hidden", "");
@@ -98,10 +97,15 @@ function clickCard(event) {
         // TODO animate the cards for match
         numMatches++;
       } else {
-        // Pause so the user can see the card
-//        pauseExecution(10000);
+
+// TODO The second card does not stay flipped long enough for the user to see
+// TODO The last second card before going to end game does not display
 
         // TODO animate the cards for mismatch
+        // Set td's background color to red, then set the class for the animation on the pictures
+        // Unset the class, then reset the background color to grey
+        picture.classList.add("incorrect");
+
         // Turn the cards back over
         picture.setAttribute("hidden", "");
         firstCard.firstChild.setAttribute("hidden", "");
@@ -140,8 +144,8 @@ document.querySelector(".grid").addEventListener("click", clickCard);
 //     2. tell how much time it took to win the game and what the star rating was
 //     3. ask if they want to play again
 function endGame(event) {
-  const timerString = document.querySelector(".timer").textContent.substring(document.querySelector(".timer").textContent.search("[0-9]")),
-        currentRanking = document.querySelector(".stars").classList;
+  const timerString = document.querySelector(".timer__number").textContent,
+        currentRanking = document.querySelector(".stars__container").classList;
   let starRanking = 0,
       message = "",
       stars = " stars";
@@ -160,7 +164,7 @@ function endGame(event) {
     starRanking = 2;
   } else if (currentRanking.contains("one")) {
     starRanking = 1;
-    stars = " star"
+    stars = " star";
   }
 
   message = "Congratulations!\nYou finished in " + timerString + " with a ranking of " + starRanking + stars + ".\nDo you want to play again?";

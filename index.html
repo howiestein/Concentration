@@ -1,19 +1,3 @@
-<!-- Development Strategy
-Figure out the HTML needed to represent a card. Remember, you have to represent two
-sides of the card. Are you going to have two separate elements stacked on top of each
-other?
-
-Add the functionality to handle clicks. This should reveal the hidden side of each
-card.
-
-Work on the matching logic. How does your game "know" if a player guesses correctly
-or incorrectly?
-
-Work on the winning condition. How does your game “know” if a player has won?
-
-We recommend saving styling until the very end. Allow your game logic and
-functionality to dictate the styling. -->
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -24,10 +8,13 @@ functionality to dictate the styling. -->
     <title>Concentration</title>
 
     <!-- Link to specific font families here -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Hanalei+Fill" rel="stylesheet">
 
     <!-- Link to additional style sheets from the main CSS file -->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
   </head>
 
   <body>
@@ -36,41 +23,42 @@ functionality to dictate the styling. -->
       <h1>The Game of Concentration</h1>
     </header>
 
-    <div class="main__container">
-      <!-- Main page content -->
-      <!-- Lay out using <article>, <section>, and <div> elements -->
-      <main>
+    <main>
+      <div class="main__container">
+
+        <!-- Current star rating -->
+        <div class="stars__container five">
+          <img class="star1" src="img/star-filled-16.png" alt="Solid star">
+          <img class="star2" src="img/star-filled-16.png" alt="Solid star">
+          <img class="star3" src="img/star-filled-16.png" alt="Solid star">
+          <img class="star4" src="img/star-filled-16.png" alt="Solid star">
+          <img class="star5" src="img/star-filled-16.png" alt="Solid star">
+        </div>
+
+        <div class="stats__container">
+          <!-- Number of moves and elapsed time -->
+          <div class="moves__label"><strong>Moves</strong></div>
+          <div class="timer__label"><strong>Elapsed time</strong></div>
+
+          <!-- Reset button -->
+          <div class="reset__container">
+            <input class="reset" type="image" src="img/reset-16.png" alt="Reset button">
+          </div>
+
+          <div class="moves__number">0</div>
+          <div class="timer__number">00:00</div>
+        </div>
+
         <!-- Grid of 16 cards -->
         <table class="grid">
         </table>
-      </main>
-
-      <!-- Sidebar content; get to display next to main -->
-      <aside>
-        <!-- TODO move this content into the main, with a div for flexbox control -->
-        <!-- current star rating, number of moves, time, and reset button -->
-        <!-- stack above main on narrow screens -->
-        <div class="sidebar__container">
-          <div class="stars five">
-            <img class="star1" src="img/star-filled-32.png" alt="Solid star">
-            <img class="star2" src="img/star-filled-32.png" alt="Solid star">
-            <img class="star3" src="img/star-filled-32.png" alt="Solid star">
-            <img class="star4" src="img/star-filled-32.png" alt="Solid star">
-            <img class="star5" src="img/star-filled-32.png" alt="Solid star">
-          </div>
-
-          <p class="moves">0 Moves</p>
-
-          <p class="timer">Elapsed time 00:00</p>
-
-          <input class="reset" type="image" src="img/reset-32.png" alt="Reset button">
-        </div>
-      </aside>
-    </div>
+      </div>
+    </main>
 
     <!-- Page footer content -->
     <footer>
       <!-- Copyright notice -->
+      <p>Footer placeholder.</p>
     </footer>
 
     <!-- Link to custom JavaScript files -->
