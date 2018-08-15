@@ -6,6 +6,35 @@ function displayNumMoves(num) {
   document.querySelector(".moves").textContent = num + " Moves";
 }
 
+// Generate a random integer between 0 and max
+function getRandomInteger(max) {
+  return(Math.floor(Math.random() * (max + 1)));
+}
+
+// Generate an array of n non-repeating random numbers
+function generateRandomList(n) {
+  const baseList = Array(n),
+        list = Array(n);
+
+  for (let i = 0; i < n; i++) {
+    baseList[i] = false;
+  }
+
+  for (let j = 0; j < n; j++) {
+    let random = getRandomInteger(n-1);
+
+    // Keep generating random numbers until we find one that is unused
+    while (baseList[random]) {
+      random = getRandomInteger(n-1);
+    }
+
+    list[j] = random;
+    baseList[random] = true;
+  }
+
+  return(list);
+}
+
 
 // Reset the star ranking to five stars
 function resetStarRanking() {
@@ -43,40 +72,35 @@ function decrementStarRanking() {
     document.querySelector(".star5").setAttribute("alt", "Outline star");
 
     // Update class to four
-    currentRanking.remove("five");
-    currentRanking.add("four");
+    currentRanking.replace("five", "four");
   } else if (currentRanking.contains("four")) {
     // Set star4 to unfilled
     document.querySelector(".star4").setAttribute("src", "img/star-unfilled-32.png");
     document.querySelector(".star4").setAttribute("alt", "Outline star");
 
     // Update class to three
-    currentRanking.remove("four");
-    currentRanking.add("three");
+    currentRanking.replace("four", "three");
   } else if (currentRanking.contains("three")) {
     // Set star3 to unfilled
     document.querySelector(".star3").setAttribute("src", "img/star-unfilled-32.png");
     document.querySelector(".star3").setAttribute("alt", "Outline star");
 
     // Update class to two
-    currentRanking.remove("three");
-    currentRanking.add("two");
+    currentRanking.replace("three", "two");
   } else if (currentRanking.contains("two")) {
     // Set star2 to unfilled
     document.querySelector(".star2").setAttribute("src", "img/star-unfilled-32.png");
     document.querySelector(".star2").setAttribute("alt", "Outline star");
 
     // Update class to one
-    currentRanking.remove("two");
-    currentRanking.add("one");
+    currentRanking.replace("two", "one");
   } else if (currentRanking.contains("one")) {
     // Set star1 to unfilled
     document.querySelector(".star1").setAttribute("src", "img/star-unfilled-32.png");
     document.querySelector(".star1").setAttribute("alt", "Outline star");
 
     // Update class to zero
-    currentRanking.remove("one");
-    currentRanking.add("zero");
+    currentRanking.replace("one", "zero");
   }
 }
 
@@ -103,7 +127,7 @@ function updateTimer(start) {
 // Function to generate a dated copyright notice
 // Code taken from https://answers.squarespace.com/questions/58787/how-to-display-current-year-for-copyright.html -->
 // TODO: in 2019, change this to be "© 2018-[CURRENT YEAR] Howard S. Stein"
-
+// TODO Change to create DOM text object and attach it as a child of the element passed as an argument
 function generateCopyright() {
   var date = new Date(),
       year = date.getFullYear(),

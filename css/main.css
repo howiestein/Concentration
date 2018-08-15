@@ -7,8 +7,8 @@ td {
     background-color: grey;
 }
 
-/* Animations for flipping card, correct match, incorrect match, winning game */
+/* Animations for flipping card, correct match (with sound?), incorrect match (with sound?) */
 /* Media queries for responsiveness--icon and image/cell sizes, font sizes, horizontal vs. vertical orientation */
-/* Round the corners of the cards and style the borders between them */
+/* Round the corners of the cards and style the borders between them and the margins */
 /* and around the table */
 /* Image for back side of card */
