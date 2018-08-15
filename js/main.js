@@ -10,10 +10,12 @@ let timerFunction = 0;
 //     4. Reset game timer
 function startGame(event) {
 
-  // Stop the timer and reset to zero
-  if (timer != 0) {
+  // Stop the timer
+  if (timerFunction != 0) {
     clearInterval(timerFunction);
   }
+
+  // Zero out the displayed time
   document.querySelector(".timer").textContent = "Elapsed time 00:00";
 
   // TODO Shuffle the cards and randomly assign them to table elements
@@ -42,19 +44,13 @@ document.querySelector(".reset").addEventListener("click", startGame);
 // If it is the second card in a pair, check if it is a match or not, and animate.
 //    Also increment the numMoves variable.
 // Attached to the table to reduce the number of listeners
+// TODO split into two functions, for first and second card selection
+// TODO switch which function is attached to the table
+// TODO implement logic to test if there is a match
 function clickCard(event) {
   const picture = event.target.firstChild;
 
-  // For initial testing, just toggle the cell color
-  if (event.target.classList.contains("red")) {
-    event.target.classList.remove("red");
-    event.target.classList.add("grey");
-    event.target.setAttribute("style", "background-color:grey");
-  } else {
-    event.target.classList.remove("grey");
-    event.target.classList.add("red");
-    event.target.setAttribute("style", "background-color:red");
-  }
+  // TODO animate picture display
 
   // Display the picture
   if (picture.hasAttribute("hidden")) {
@@ -70,6 +66,8 @@ function clickCard(event) {
     decrementStarRanking();
   }
 
+  // If the player has won the game, call endGame()
+
   event.preventDefault();
 }
 
@@ -79,9 +77,38 @@ document.querySelector(".grid").addEventListener("click", clickCard);
 
 // End game--display modal to
 //     1. congratulate the player
-//     2. ask if they want to play again
-//     3. tell how much time it took to win the game and what the star rating was
+//     2. tell how much time it took to win the game and what the star rating was
+//     3. ask if they want to play again
+function endGame(event) {
+  const timerString = document.querySelector(".timer").textContent.substr(document.querySelector(".timer").textContentsearch("[0-9]")),
+        currentRanking = document.querySelector(".stars").classList,
+        starRanking = 0,
+        message = "";
 
+  // Stop the timer
+  clearInterval(timerFunction);
+
+  // Calculate star ranking
+  if (currentRanking.contains("five")) {
+    starRanking = 5;
+  } else if (currentRanking.contains("four")) {
+    starRanking = 4;
+  } else if (currentRanking.contains("three")) {
+    starRanking = 3;
+  } else if (currentRanking.contains("two")) {
+    starRanking = 2;
+  } else if (currentRanking.contains("one")) {
+    starRanking = 1;
+  }
+
+  message = "Congratulations!\nYou finished in " + timerString + "with a ranking of " + starRanking + " stars.\nDo you want to play again?";
+
+  if (confirm(message)) {
+    startGame(event);
+  }
+
+  event.preventDefault();
+}
 
 // When everything is finished loading, initialize a new game
 startGame(new Event("click"));
