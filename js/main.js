@@ -41,16 +41,13 @@ function startGame(event) {
 
     for (let col = 0; col < numCardCols; col++) {
       const newCell = document.createElement("td"),
-            index = indices[(row * numCardRows) + col],
-            imageIndex = pairs[index].substring(pairs[index].search("[1-8]"));
-            imageName = "img/card" + imageIndex + ".jpg",
+            index = Math.floor((indices[(row * numCardRows) + col]) / 2),
+            imageName = "img/card" + (index+1) + ".jpg",
             newImg = document.createElement("img");
 
       newCell.classList.add(pairs[index]);
       newImg.setAttribute("src", imageName);
-      newImg.setAttribute("alt", alts[imageIndex-1]);
-      newImg.setAttribute("height", "100px");
-      newImg.setAttribute("width", "100px");
+      newImg.setAttribute("alt", alts[index]);
       newImg.setAttribute("hidden", "");
       newCell.appendChild(newImg);
       newRow.appendChild(newCell);
