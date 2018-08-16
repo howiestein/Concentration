@@ -29,7 +29,7 @@ main {
 
 header {
   font-family: 'Hanalei Fill';
-  font-size: 18px;
+  font-size: 86%;
   box-sizing: border-box;
 }
 
@@ -40,6 +40,7 @@ footer {
   width: 100%;
   background-color: #ccc;
   text-align: right;
+  font-size: 70%;
 }
 
 div {
@@ -139,7 +140,7 @@ img, embed, object, video {
 }
 
 .reset__container {
-  width: 20%;
+  width: 18%;
   vertical-align: top;
   display: inline-block;
   margin-right: 0;
@@ -163,25 +164,26 @@ img, embed, object, video {
  *
  */
 
+/* I found the idea to set both the height and width of the table elements */
+/* relative to the viewport width (in order to keep the cells square) at */
+/* http://design.brubakerministries.org/responsive-table-cells-equal-height-width-css/ */
+
 tr {
-  height: 60px;
+  height: 20vw;
 }
 
 td {
-  width: 60px;
+  width: 20vw;
   background-color: #888888;
   border-radius: 5px;
-/*  background-image: url("../img/circle.png"); */
   margin: auto;
 }
 
 td img {
-  width: 50px;
-  height: 50px;
-  padding-left: 4px;
+  width: 88%;
+  padding: 6%;
   vertical-align: middle;
   margin: auto;
-  transition: width 3s;
 }
 
 .grid {

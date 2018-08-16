@@ -1,0 +1,85 @@
+/*
+ *
+ * Rules for adjusting the font sizes
+ *
+ */
+
+@media screen and (min-width: 450px) and (max-width: 599px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 749px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 899px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1049px) {
+  body {
+    font-size: 22px;
+  }
+}
+
+@media screen and (min-width: 1050px) and (max-width: 1199px) {
+  body {
+    font-size: 24px;
+  }
+}
+
+/* Cap the display width at 1200 pixels */
+@media screen and (min-width: 1200px) {
+  body {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 26px;
+  }
+}
+
+
+/*
+ *
+ * Rules for reorganizing the screen to put the stars and stats to the left
+ * of the grid as it gets bigger
+ *
+ */
+
+@media screen and (min-width: 500px) {
+  .main__container {
+    flex-direction: column;
+  }
+
+  .stats__container {
+    width: 30%;
+    flex-direction: column;
+  }
+
+  .timer__label, .timer__number {
+    width: 70%;
+  }
+
+  .reset__container {
+    float: left;
+  }
+
+  tr {
+    height: 14vw;
+  }
+
+  td {
+    width: 14vw;
+  }
+
+  .grid {
+    width: 70%;
+    float: right;
+  }
+}
