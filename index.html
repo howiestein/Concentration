@@ -25,33 +25,36 @@
 
     <main>
       <div class="main__container">
-
-        <!-- Current star rating -->
-        <div class="stars__container five">
-          <img class="star1" src="img/star-filled-16.png" alt="Solid star">
-          <img class="star2" src="img/star-filled-16.png" alt="Solid star">
-          <img class="star3" src="img/star-filled-16.png" alt="Solid star">
-          <img class="star4" src="img/star-filled-16.png" alt="Solid star">
-          <img class="star5" src="img/star-filled-16.png" alt="Solid star">
-        </div>
-
         <div class="stats__container">
+          <!-- Current star rating -->
+          <div class="stars__wrapper">
+            <div class="stars__container five">
+              <img class="star1" src="img/star-filled-16.png" alt="Solid star">
+              <img class="star2" src="img/star-filled-16.png" alt="Solid star">
+              <img class="star3" src="img/star-filled-16.png" alt="Solid star">
+              <img class="star4" src="img/star-filled-16.png" alt="Solid star">
+              <img class="star5" src="img/star-filled-16.png" alt="Solid star">
+            </div>
+          </div>
+
           <!-- Number of moves and elapsed time -->
           <div class="moves__label"><strong>Moves</strong></div>
           <div class="timer__label"><strong>Elapsed time</strong></div>
+
+          <div class="moves__number">0</div>
+          <div class="timer__number">00:00</div>
 
           <!-- Reset button -->
           <div class="reset__container">
             <input class="reset" type="image" src="img/reset-16.png" alt="Reset button">
           </div>
-
-          <div class="moves__number">0</div>
-          <div class="timer__number">00:00</div>
         </div>
 
-        <!-- Grid of 16 cards -->
-        <table class="grid">
-        </table>
+        <!-- Grid of cards -->
+        <div class="table__container">
+          <table class="grid">
+          </table>
+        </div>
       </div>
     </main>
 
@@ -62,5 +65,6 @@
     <!-- Link to custom JavaScript files -->
     <script src="js/utilities.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/click.js"></script>
   </body>
 </html>

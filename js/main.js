@@ -2,8 +2,7 @@
 let numMoves = 0,
     startTime = performance.now(),
     timerFunction = 0
-    turnBeginning = true,
-    firstCard = "",
+    firstCard = null,
     numMatches = 0;
 const numCardRows = 4,
       numCardCols = 4;
@@ -45,6 +44,7 @@ function startGame(event) {
             newImg = document.createElement("img");
 
       newCell.classList.add("pair"+(index+1));
+      newImg.classList.add("card");
       newImg.setAttribute("src", imageName);
       newImg.setAttribute("alt", alts[index]);
       newImg.setAttribute("hidden", "");
@@ -65,8 +65,7 @@ function startGame(event) {
   resetStarRanking();
 
   // Reset global variables
-  turnBeginning = true;
-  firstCard = "";
+  firstCard = null;
   numMatches = 0;
 
   // Reset the game timer and start it running
@@ -78,66 +77,6 @@ function startGame(event) {
 
 // Attach the new game function to the reset button
 document.querySelector(".reset").addEventListener("click", startGame);
-
-
-// Process clicks on the cards
-function clickCard(event) {
-  const picture = event.target.firstChild;
-
-  // If the target is an image (IMG), do nothing because it has already been flipped over
-  if (event.target.tagName == "TD") {
-    // When a face-down card is clicked, display the picture
-    // TODO animate picture display
-    picture.removeAttribute("hidden");
-
-    // If this is the second card of the turn, test if it is a match or not
-    if (!turnBeginning) {
-      // Test if the image matches the first one turned over
-      if (event.target.className == firstCard.className) {
-        // TODO animate the cards for match
-        numMatches++;
-      } else {
-
-// TODO The second card does not stay flipped long enough for the user to see
-// TODO The last second card before going to end game does not display
-
-        // TODO animate the cards for mismatch
-        // Set td's background color to red, then set the class for the animation on the pictures
-        // Unset the class, then reset the background color to grey
-        picture.classList.add("incorrect");
-
-        // Turn the cards back over
-        picture.setAttribute("hidden", "");
-        firstCard.firstChild.setAttribute("hidden", "");
-      }
-
-      // Update the number of moves
-      numMoves++;
-      displayNumMoves(numMoves);
-
-      // Update the star ranking based on the number of moves
-      if (numMoves == 9 || numMoves == 12 || numMoves == 15 || numMoves == 18 || numMoves == 21) {
-        decrementStarRanking();
-      }
-
-      turnBeginning = true;
-    } else {
-      firstCard = event.target;
-      turnBeginning = false;
-    }
-
-    // If the player has won the game, call endGame()
-    if (numMatches == 8) {
-      endGame(event);
-    }
-  }
-
-  event.preventDefault();
-}
-
-// Attach the click event listener
-document.querySelector(".grid").addEventListener("click", clickCard);
-
 
 // End game--display modal to
 //     1. congratulate the player

@@ -4,20 +4,21 @@
  *
  */
 
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: Roboto;
-  font-size: 14px;
-}
-
+/* TODO Size the html to not leave blank space below the footer. */
 html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
+}
+
+body {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  width: 100%;
+  font-family: Roboto;
+  font-size: 14px;
+  background-color: #aaaad4;
 }
 
 main {
@@ -29,18 +30,19 @@ main {
 
 header {
   font-family: 'Hanalei Fill';
-  font-size: 86%;
+  font-size: 12px;
   box-sizing: border-box;
 }
 
 footer {
   padding-top: 20px;
+  margin-top: 20px;
   box-sizing: border-box;
   border-top: 1px solid #e0e0e0;
   width: 100%;
   background-color: #ccc;
   text-align: right;
-  font-size: 70%;
+  font-size: 10px;
 }
 
 div {
@@ -81,16 +83,6 @@ img, embed, object, video {
   box-sizing: border-box;
 }
 
-/* TODO Style background colors for stars and stats, This requires creating new images with matching color backgrounds */
-.stars__container {
-  width: 130px;
-  padding: 10px;
-  display: inline-block;
-  margin: auto;
-  order: 1;
-  box-sizing: border-box;
-}
-
 .stats__container {
   display: flex;
   flex-wrap: wrap;
@@ -108,6 +100,19 @@ img, embed, object, video {
  * Statistics elements
  *
  */
+
+/* TODO The background colors for the stars and reset button don't match exactly. */
+.stars__wrapper {
+  width: 100%;
+}
+
+.stars__container {
+  width: 130px;
+  display: inline-block;
+  margin: auto;
+  order: 1;
+  box-sizing: border-box;
+}
 
 .moves__label, .moves__number {
   width: 30%;
@@ -169,26 +174,33 @@ img, embed, object, video {
 /* http://design.brubakerministries.org/responsive-table-cells-equal-height-width-css/ */
 
 tr {
-  height: 20vw;
+  height: 22.5vw;
 }
 
 td {
-  width: 20vw;
+  width: 22.5vw;
   background-color: #888888;
   border-radius: 5px;
   margin: auto;
 }
 
-td img {
-  width: 88%;
-  padding: 6%;
+.card {
+  width: 20vw;
+  height: 20vw;
   vertical-align: middle;
   margin: auto;
+  padding: 1vw;
 }
 
 .grid {
   order: 8;
-  width: 100%;
-  border-spacing: 10px;
+  border-spacing: 2vw;
   background-color: #8f8ff0;
+}
+
+.table__container {
+  order: 8;
+  width: 100%;
+  display:inline-block;
+  margin: auto;
 }
