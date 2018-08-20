@@ -1,3 +1,5 @@
+/* TODO Add sounds for flipping card, correct match, incorrect match, and winning game */
+
 /* Animation for flipping a card over */
 .card {
   animation-duration: 1s;
@@ -8,12 +10,10 @@
 @keyframes slidein {
   from {
     width: 0%;
-    height: 80%;
   }
 
   to {
     width: 90%;
-    height: 80%;
   }
 }
 
@@ -80,5 +80,3 @@
     transform: rotate(360deg);
   }
 }
-
-/* TODO Add sounds for flipping card, correct match, incorrect match, and winning game */
