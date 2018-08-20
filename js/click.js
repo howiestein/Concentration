@@ -1,7 +1,12 @@
+// Functions for processing card click events
+// Because screen repaints only occur after an event listener is finished executing,
+// we cascade these functions by attaching them as callbacks when each animation in
+// turn finishes.
+
+
 // Process an unsuccessful match
 function processMismatch(event) {
-  const picture = event.target,
-        cell = picture.parentElement;
+  const picture = event.target;
 
   picture.removeEventListener("animationend", processMismatch);
 

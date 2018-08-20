@@ -1,7 +1,7 @@
 // Global variable declarations
 let numMoves = 0,
     startTime = performance.now(),
-    timerFunction = 0
+    timerFunction = 0,
     firstCard = null,
     numMatches = 0;
 const numCardRows = 4,
@@ -15,8 +15,8 @@ const numCardRows = 4,
 function startGame(event) {
   const fragment = document.createDocumentFragment(),
         alts = ["Daisy", "Rose", "Rabbit", "Willet", "Heron", "Plover", "Deptford pink", "Dragonfly"],
-        table = document.querySelector(".grid")
-        indices = Array(16);
+        table = document.querySelector(".grid");
+  let indices = Array(16);
 
   // Stop the timer
   if (timerFunction != 0) {
