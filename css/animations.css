@@ -1,43 +1,26 @@
-/* TODO Add sounds for flipping card, correct match, incorrect match, and winning game */
-
 /* Animation for flipping a card over */
 .card {
-  animation-duration: 1s;
-  animation-name: slidein;
-  animation-iteration-count: 1;
+  animation: 1s slidein;
 }
 
 @keyframes slidein {
-  from {
-    width: 0%;
-  }
-
-  to {
-    width: 90%;
-  }
+  from { width: 0%; }
+  to { width: 90%; }
 }
 
 /* Animation for a correct match */
 .correct {
-  animation-duration: 0.25s;
-  animation-name: bounce;
-  animation-iteration-count: 1;
+  animation: 0.25s bounce;
 }
 
 @keyframes bounce {
-  from {
-    bottom: 0px;
-  }
-
-  to {
-    bottom: 20px;
-  }
+  from { bottom: 0px; }
+  to { bottom: 20px; }
 }
 
 /* Animation for an incorrect guess */
 .incorrect {
-  animation-duration: 0.25s;
-  animation-name: shake;
+  animation: 0.15s 2 shake;
 }
 
 @keyframes shake {
@@ -45,15 +28,7 @@
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
-  25% {
-    -webkit-transform: rotate(30deg);
-    transform: rotate(30deg);
-  }
   50% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-  75% {
     -webkit-transform: rotate(30deg);
     transform: rotate(30deg);
   }
@@ -65,11 +40,10 @@
 
 /* Animations for winning game */
 .winning {
-  animation-duration: 0.5s;
-  animation-name: turn__all;
+  animation: 0.5s turn_all;
 }
 
-@keyframes turn__all {
+@keyframes turn_all {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);

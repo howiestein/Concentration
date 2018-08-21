@@ -3,7 +3,7 @@
 
 // Display the number of moves they user has made
 function displayNumMoves(num) {
-  document.querySelector(".moves__number").textContent = num;
+  document.querySelector(".moves-number").textContent = num;
 }
 
 // Generate a random integer between 0 and max
@@ -47,7 +47,7 @@ function pauseExecution(time) {
 
 // Reset the star ranking to five stars
 function resetStarRanking() {
-  const ranking = document.querySelector(".stars__container").classList;
+  const ranking = document.querySelector(".stars-container").classList;
 
   // Set class to five stars
   ranking.remove("four", "three", "two", "one", "zero");
@@ -73,7 +73,7 @@ function resetStarRanking() {
 
 // Remove a star from the ranking
 function decrementStarRanking() {
-  const currentRanking = document.querySelector(".stars__container").classList;
+  const currentRanking = document.querySelector(".stars-container").classList;
 
   if (currentRanking.contains("five")) {
     // Set star5 to unfilled
@@ -122,13 +122,13 @@ function updateTimer(start) {
         seconds = Math.trunc(baseSeconds - (minutes * 60));
 
   if (minutes < 10 && seconds < 10) {
-    document.querySelector(".timer__number").textContent = "0" + minutes + ":0" + seconds;
+    document.querySelector(".timer-number").textContent = "0" + minutes + ":0" + seconds;
   } else if (minutes < 10) {
-    document.querySelector(".timer__number").textContent = "0" + minutes + ":" + seconds;
+    document.querySelector(".timer-number").textContent = "0" + minutes + ":" + seconds;
   } else if (seconds < 10) {
-    document.querySelector(".timer__number").textContent = minutes + ":0" + seconds;
+    document.querySelector(".timer-number").textContent = minutes + ":0" + seconds;
   } else {
-    document.querySelector(".timer__number").textContent = minutes + ":" + seconds;
+    document.querySelector(".timer-number").textContent = minutes + ":" + seconds;
   }
 }
 

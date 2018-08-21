@@ -24,7 +24,7 @@ function startGame(event) {
   }
 
   // Zero out the displayed time
-  document.querySelector(".timer__number").textContent = "00:00";
+  document.querySelector(".timer-number").textContent = "00:00";
 
   // Clear the current board. Code taken from https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes
   while (table.firstChild) {
@@ -83,8 +83,8 @@ document.querySelector(".reset").addEventListener("click", startGame);
 //     2. tell how much time it took to win the game and what the star rating was
 //     3. ask if they want to play again
 function endGame(event) {
-  const timerString = document.querySelector(".timer__number").textContent,
-        currentRanking = document.querySelector(".stars__container").classList;
+  const timerString = document.querySelector(".timer-number").textContent,
+        currentRanking = document.querySelector(".stars-container").classList;
   let starRanking = 0,
       message = "",
       stars = " stars";

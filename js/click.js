@@ -20,10 +20,6 @@ function processMismatch(event) {
   picture.classList.remove("incorrect");
   firstCard.firstChild.classList.remove("incorrect");
 
-  // Update the number of moves
-  numMoves++;
-  displayNumMoves(numMoves);
-
   if (numMoves == 9 || numMoves == 12 || numMoves == 15 || numMoves == 18 || numMoves == 21) {
     // Update the star ranking based on the number of moves
     decrementStarRanking();
@@ -43,13 +39,9 @@ function processSuccess(event) {
   // Update the number of matches
   numMatches++;
 
-  // Update the number of moves
-  numMoves++;
-  displayNumMoves(numMoves);
-
   // If the player has won the game, call endGame()
   if (numMatches == 8) {
-    // Add winning class to all images
+    // Add winning class to all images for animation
     images = document.querySelectorAll("img");
     images.forEach(function(element) {
       element.classList.add("winning");
@@ -75,7 +67,7 @@ function processSecondCard(event) {
 
   // Test if the image matches the first one turned over
   if (cell.className == firstCard.className) {
-    // Animate the cards indicating a successful match and increment the number of matches
+    // Animate the cards indicating a successful match
     picture.addEventListener("animationend", processSuccess);
 
     picture.style.position = "relative";
@@ -96,6 +88,10 @@ function processSecondCard(event) {
     picture.classList.add("incorrect");
     firstCard.firstChild.classList.add("incorrect");
   }
+
+  // Update the number of moves
+  numMoves++;
+  displayNumMoves(numMoves);
 
   event.preventDefault();
 }
