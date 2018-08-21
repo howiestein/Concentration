@@ -27,6 +27,9 @@ function processMismatch(event) {
 
   firstCard = null;
 
+  //Reenable click processing
+  document.querySelector(".grid").addEventListener("click", clickCard);
+
   event.preventDefault();
 }
 
@@ -54,6 +57,9 @@ function processSuccess(event) {
   }
 
   firstCard = null;
+
+  //Reenable click processing
+  document.querySelector(".grid").addEventListener("click", clickCard);
 
   event.preventDefault();
 }
@@ -117,6 +123,9 @@ function clickCard(event) {
     if (firstCard == null) {
       firstCard = cell;
     } else {
+      // Suspend clicks until the card processing has completed.
+      document.querySelector(".grid").removeEventListener("click", clickCard);
+
       // If this is the second card of the turn, attach an event handler for when the animation is done
       picture.addEventListener("animationend", processSecondCard);
     }
