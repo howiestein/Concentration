@@ -15,6 +15,11 @@ a dialogue box is displayed with the final game statistics, asking the player
 if they wish to play again.
 
 
+Dependencies
+
+The program is uses the Roboto and Hanalei Fill font families from Google.
+
+
 Future goals
 
 In future versions, the following items will be implemented:
